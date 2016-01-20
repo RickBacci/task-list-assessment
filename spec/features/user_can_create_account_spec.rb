@@ -4,7 +4,7 @@ RSpec.feature "User", type: :feature do
 
   it 'can create an account' do
 
-    visit root_path
+    visit tasks_path
 
     click_link "Sign Up"
     fill_in "Email", with: 'user@email.com'
@@ -12,7 +12,7 @@ RSpec.feature "User", type: :feature do
     fill_in 'Confirmation', with: 'password'
     click_link_or_button "Create Account"
 
-    expect(page).to have_content('Welcome')
+    expect(page).to have_content('Welcome to Task Manager')
   end
 
 end
