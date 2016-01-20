@@ -14,6 +14,7 @@
       <tr>
         <td><%= list.title %></td>
         <td><%= list.description %></td>
+        <td><%= link_to "Edit", edit_task_list_path(list.id) %></td>
       </tr>
     <% end %>
   </table>

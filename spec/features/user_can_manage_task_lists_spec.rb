@@ -45,19 +45,16 @@ RSpec.feature "User", type: :feature do
     expect(page).to have_content('test title')
     expect(page).to have_content('description')
 
+    click_link_or_button "Edit"
 
+    fill_in "Title", with: 'edited title'
+    fill_in 'Description', with: 'edited description'
 
+    click_link_or_button "Update TaskList"
 
-    # click_link_or_button "Edit"
-    #
-    # fill_in "Title", with: 'edited title'
-    # fill_in 'Description', with: 'edited description'
-    #
-    # click_link_or_button "Update TaskList"
-    #
-    # expect(page).to have_content('TaskList successfully updated!')
-    # expect(page).to have_content('edited title')
-    # expect(page).to have_content('edited description')
+    expect(page).to have_content('TaskList successfully updated!')
+    expect(page).to have_content('edited title')
+    expect(page).to have_content('edited description')
   end
 end
 
