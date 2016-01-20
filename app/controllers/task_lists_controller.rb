@@ -8,7 +8,6 @@ class TaskListsController < ApplicationController
   end
 
   def create
-
     @task_list = current_user.task_lists.new(task_list_params)
 
     if @task_list.save
@@ -19,6 +18,30 @@ class TaskListsController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @task_list = current_user.task_lists.find(params[:id])
+  end
+
+  def update
+    task_list = current_user.task_lists.find(params[:id])
+
+    if task_list.update(task_list_params)
+      flash[:success] = "TaskList successfully updated!"
+      redirect_to task_lists_path
+    else
+      flash[:failure] = "TaskList update unsuccessful!"
+      render :new
+    end
+  end
+
+  def destroy
+    current_user.task_lists.find(params[:id]).destroy
+    flash[:success] = "TaskList deleted!"
+    redirect_to task_lists_path
+  end
+
+
 
   private
 
