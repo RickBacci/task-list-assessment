@@ -14,7 +14,7 @@ RSpec.describe Task, type: :model do
   it 'has a status' do
     task = Task.new(title: 'hello', notes: 'none', start: Date.new, due:Date.new + 1)
 
-    expect(task.status).to eq(0)
+    expect(task.status).to eq('incomplete')
   end
 
   it 'has a note field' do

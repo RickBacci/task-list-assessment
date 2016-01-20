@@ -7,8 +7,6 @@ RSpec.feature "User tasks", type: :feature do
     sign_in
 
   end
-
-  end
 end
 
 # A user can create a task. Tasks must have titles.

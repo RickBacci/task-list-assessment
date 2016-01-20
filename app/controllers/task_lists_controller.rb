@@ -12,7 +12,7 @@ class TaskListsController < ApplicationController
 
     if @task_list.save
       flash[:success] = "TaskList successfully created"
-      redirect_to task_lists_path
+      redirect_to tasks_path
     else
       flash[:failure] = "There was a problem creating your TaskList"
       render :new
@@ -28,7 +28,7 @@ class TaskListsController < ApplicationController
 
     if task_list.update(task_list_params)
       flash[:success] = "TaskList successfully updated!"
-      redirect_to task_lists_path
+      redirect_to tasks_path
     else
       flash[:failure] = "TaskList update unsuccessful!"
       render :new
@@ -38,7 +38,7 @@ class TaskListsController < ApplicationController
   def destroy
     current_user.task_lists.find(params[:id]).destroy
     flash[:success] = "TaskList deleted!"
-    redirect_to task_lists_path
+    redirect_to tasks_path
   end
 
 
