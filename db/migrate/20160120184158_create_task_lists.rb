@@ -3,6 +3,7 @@ class CreateTaskLists < ActiveRecord::Migration
     create_table :task_lists do |t|
       t.string :title
       t.string :description
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end
