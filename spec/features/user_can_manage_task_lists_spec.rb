@@ -13,16 +13,16 @@ RSpec.feature "User", type: :feature do
     fill_in 'Password', with: 'password'
     click_link_or_button "Login"
 
-    expect(page).to have_link('Create New TaskList')
+    expect(page).to have_link('New TaskList')
 
-    click_link 'Create New TaskList'
+    click_link 'New TaskList'
 
     fill_in "Title", with: 'title'
-    fill_in 'description', with: 'description'
+    fill_in 'Description', with: 'description'
+
     click_link_or_button "Create TaskList"
 
-    expect(page).to have_content('title')
-    expect(page).to have_content('description')
+    expect(page).to have_content('TaskList successfully created')
   end
 end
 
