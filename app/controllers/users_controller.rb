@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to Task Manager!"
+      flash[:success] = "Welcome to Task Manager! Thanks for joining!"
       session[:user_id] = @user.id
 
       redirect_to root_path
