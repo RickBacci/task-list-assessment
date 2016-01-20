@@ -80,7 +80,6 @@ RSpec.describe Task, type: :model do
     due_date   = Date.yesterday
     task       = Task.create!(title: 'hello', notes: 'none', start: Date.today, due: Date.tomorrow)
 
-
     expect(task.status).to eq('incomplete')
 
     task.complete!
