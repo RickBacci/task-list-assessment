@@ -79,7 +79,7 @@ RSpec.feature "User can interact with TaskList", type: :feature do
 
     click_link_or_button "Delete"
 
-    expect(page).to have_content('TaskList successfully deleted!')
+    expect(page).to have_content('TaskList deleted!')
     expect(page).to_not have_content('edited title')
     expect(page).to_not have_content('edited description')
   end

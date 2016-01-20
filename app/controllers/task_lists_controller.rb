@@ -35,6 +35,13 @@ class TaskListsController < ApplicationController
     end
   end
 
+  def destroy
+    current_user.task_lists.find(params[:id]).destroy
+    flash[:success] = "TaskList deleted!"
+    redirect_to task_lists_path
+  end
+
+
 
   private
 
