@@ -12,7 +12,8 @@
     </th>
     <%- @task_lists.each do |list| %>
       <tr>
-        <td><%= list.title %></td>
+        <td><%= link_to "view", task_list_path(list.id) %></td>
+        <td><%= link_to list.title, task_list_path(list.id) %></td>
         <td><%= list.description %></td>
         <td><%= link_to "Edit", edit_task_list_path(list.id) %></td>
         <td><%= link_to "Delete", task_list_path(list.id), method: :delete %></td>
