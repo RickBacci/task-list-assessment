@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
+  resources :task_lists, only: [:new, :create]
+  resources :tasks,      only: [:index]
+  resources :users,      only: [:new, :create]
+  resources :sessions,   only: [:new, :create, :destroy]
 
-  resources :tasks, only: [:index]
-  resources :users, only: [:new, :create]
-  resources :sessions, only: [:new, :create, :destroy]
-
-  delete '/logout', to: 'sessions#destroy'
+  delete    :logout, to: 'sessions#destroy'
 
   root 'tasks#index'
 end
