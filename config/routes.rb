@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :task_lists, only: [:new, :create]
+  resources :task_lists, only: [:index, :new, :create]
   resources :tasks,      only: [:index]
   resources :users,      only: [:new, :create]
   resources :sessions,   only: [:new, :create, :destroy]
