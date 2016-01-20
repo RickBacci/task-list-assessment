@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if password_confirmed && @user.save
       flash[:success] = "Welcome to Task Manager! Thanks for joining!"
       session[:user_id] = @user.id
 
@@ -20,6 +20,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password)
+  end
+
+  def password_confirmed
+    params[:user][:password] == params[:user][:confirmation]
   end
 end
 
