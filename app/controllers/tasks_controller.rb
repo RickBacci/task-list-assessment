@@ -46,7 +46,25 @@ class TasksController < ApplicationController
     redirect_to task_list_path(params[:task_list_id])
   end
 
+  def update_status
+    @task_list = current_user.task_lists.find(params[:tasklist_id])
+    @task = @task_list.tasks.find(params[:task_id])
+
+    @task.update(status: toggle_task_status(@task))
+    redirect_to task_list_path(@task_list)
+  end
+
   private
+
+  def toggle_task_status(task)
+    if task.incomplete?
+      task.complete!
+    else
+      task.incomplete!
+    end
+    return task.status
+  end
+
 
   def task_params
     params.require(:task).permit(:title, :status, :notes, :start, :due, :tasklist_id)
