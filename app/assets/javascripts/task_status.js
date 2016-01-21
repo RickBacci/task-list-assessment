@@ -22,7 +22,6 @@ $(document).ready(function() {
           var getRow     = event.target.parentNode.parentNode;
           var taskId     = event.target.dataset.task_id;
           var buildId    = "#task-status-" + taskId
-          debugger;
 
           if ( buttonText.localeCompare("Incomplete") ) {
             event.target.text = "Complete"
@@ -34,7 +33,6 @@ $(document).ready(function() {
 
         },
         error: function(xhr) {
-          debugger;
           console.log(xhr.responseText)
         }
       });
