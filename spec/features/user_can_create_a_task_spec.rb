@@ -13,15 +13,12 @@ RSpec.feature "User tasks", type: :feature do
 
     click_link 'Create Task'
 
-    fill_in "Title", with: 'my task'
+    fill_in 'Title', with: 'my task'
     fill_in 'Notes', with: 'task notes'
-    fill_in 'start', with: Date.new
-    fill_in 'due'  , with: Date.tomorrow
+    fill_in 'Start',  with: Date.new
+    fill_in 'Due'  , with: Date.tomorrow
 
-    click_link "Create Task"
-
-
-
+    click_button "Create Task"
   end
 end
 
