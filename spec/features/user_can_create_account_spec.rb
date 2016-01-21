@@ -4,7 +4,7 @@ RSpec.feature "User", type: :feature do
 
   it 'can create an account' do
 
-    visit tasks_path
+    visit root_path
 
     click_link "Sign Up"
     fill_in "Email", with: 'user@email.com'
@@ -17,7 +17,7 @@ RSpec.feature "User", type: :feature do
 
   it 'must have matching confirmation when setting password' do
 
-    visit tasks_path
+    visit root_path
 
     click_link "Sign Up"
     fill_in "Email", with: 'user@email.com'

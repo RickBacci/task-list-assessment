@@ -2,13 +2,12 @@ require 'rails_helper'
 
 RSpec.feature "User tasks", type: :feature do
   include DatabaseCleaner
+  include TestHelpers
 
   it 'can be created' do
     sign_up
     login
     create_tasklist
-
-
 
     click_link 'title'
 

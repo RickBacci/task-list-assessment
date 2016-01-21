@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :task_lists
-  resources :tasks,      only: [:index, :new, :create]
+
+  resources :task_lists do
+    resources :tasks,      only: [:index, :new, :create]
+  end
+
   resources :users,      only: [:new, :create]
   resources :sessions,   only: [:new, :create, :destroy]
 
