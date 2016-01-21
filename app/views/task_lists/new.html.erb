@@ -1,5 +1,17 @@
 <h1>New TaskList</h1>
 
+<% if @task_list.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@task_list.errors.count, "error") %> prohibited this task list from being saved:</h2>
+
+    <ul>
+      <% @task_list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for(@task_list) do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
