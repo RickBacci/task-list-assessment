@@ -5,23 +5,19 @@ class TasksController < ApplicationController
   end
 
   def new
-    # @task_list = current_user.task_lists.find(params[:id])
     @task_list = current_user.task_lists.find(params[:task_list_id])
-    @task = Task.new
+    @task = @task_list.tasks.new
   end
 
   def create
-    # task_list = current_user.task_lists.where(id: params[:task_list])
-    @task_list = current_user.task_lists.find(params[:id])
-    require 'pry'; binding.pry
-    @task = Task.create(task_params)
-    # task_list << @task.save
+    @task_list = current_user.task_lists.find(params[:task_list_id])
+    @task = @task_list.tasks.create(task_params)
 
     if @task.save
-      flash[:success] = "TaskList successfully created"
-      redirect_to task_list_tasks_path(task_list.id)
+      flash[:success] = "Task successfully created"
+      redirect_to task_list_tasks_path(@task_list)
     else
-      flash[:failure] = "There was a problem creating your TaskList"
+      flash[:failure] = "There was a problem creating your Task"
       render :new
     end
   end
@@ -29,7 +25,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:status, :notes, :start, :due, :tasklist_id)
+    params.require(:task).permit(:title, :status, :notes, :start, :due, :tasklist_id)
   end
 
 end
