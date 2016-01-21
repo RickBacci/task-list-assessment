@@ -1,6 +1,11 @@
 class TaskListsController < ApplicationController
+
   def index
     @task_lists = current_user.task_lists if current_user
+  end
+
+  def show
+    @task_list = current_user.task_lists.find(params[:id])
   end
 
   def new
