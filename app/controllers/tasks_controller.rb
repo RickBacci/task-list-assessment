@@ -5,8 +5,9 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task_list = current_user.task_lists.where(id: params[:task_list])
-    @task      = Task.new
+    @task_list = current_user.task_lists.find(params[:task_list_id])
+    @task = Task.new
+  end
   end
 
   private
