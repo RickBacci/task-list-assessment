@@ -1,0 +1,17 @@
+<h1>Welcome to Task Manager</h1>
+<h2>TaskList: <%= @task_list.title %></h2>
+<br>
+<br>
+<p><%= @task_list.description %></p>
+<br>
+<br>
+<% if current_user %>
+  <%= link_to 'Create Task', new_task_list_path  %>
+  <br>
+  <br>
+  <%= link_to "Logout", logout_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign Up", new_user_path  %>
+  <%= link_to "Login", new_session_path  %>
+  <br>
+<% end %>
