@@ -15,15 +15,15 @@ RSpec.feature "User tasks", type: :feature do
 
     fill_in 'Title', with: 'my task'
     fill_in 'Notes', with: 'task notes'
-    fill_in 'Start',  with: Date.new
+    fill_in 'Start', with: Date.today
     fill_in 'Due'  , with: Date.tomorrow
 
     click_button "Create Task"
+
+   expect(page).to have_content('Task successfully created!')
   end
 end
 
-# A user can create a task. Tasks must have titles.
-# A user can update and adjust the properties of an existing task they own.
 # A user can mark a task they own as completed.
 # By default, users should only see incomplete tasks they own.
 # By default, users should only see tasks with a start date before today.
