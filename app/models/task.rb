@@ -10,13 +10,13 @@ class Task < ActiveRecord::Base
 
 
   def start_date_cannot_be_in_the_past
-    if start < Date.today
+    if start.present? && start < Date.today
       errors.add(:start, "can't be in the past")
     end
   end
 
   def due_date_cannot_be_in_the_past
-    if due < Date.today
+    if due.present? && due < Date.today
       errors.add(:due, "can't be in the past")
     end
   end
