@@ -1,4 +1,6 @@
 class Task < ActiveRecord::Base
+  has_many :task_lists
+
   enum status: [:incomplete, :complete]
 
   validates :title, presence: true
