@@ -1,12 +1,41 @@
-<h1>Welcome to Task Manager</h1>
-<h2>TaskList: <%= @task_list.title %></h2>
-<br>
-<br>
-<p><%= @task_list.description %></p>
-<br>
-<br>
 <% if current_user %>
+  <h1>Welcome to Task Manager</h1>
+  <h2>TaskList: <%= @task_list.title %></h2>
+  <br>
+  <br>
+  <p>Description</p>
+  <p><%= @task_list.description %></p>
+  <br>
+  <br>
   <%= link_to 'Create Task', new_task_list_task_path(@task_list) %>
+  <table id='tasks' class="display table table-striped" cellspacing="0" width="75%">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Notes</th>
+        <th>Start Date</th>
+        <th>Due Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id='tasks-table'>
+      <%- @task_list.tasks.each do |task| %>
+        <tr class="task-row-<%=task.status%>">
+          <td><%= task.title %></td>
+          <td><%= task.notes %></td>
+          <td><%= task.start %></td>
+          <td><%= task.due %></td>
+          <td><%= link_to "Edit Task", edit_task_list_task_path(@task_list, task.id) %></td>
+          <td><%= link_to "Delete Task", task_list_task_path(@task_list, task.id), method: :delete %></td>
+          <td id="task-status-<%=task.status%>">
+            <a href="" data-tasklist_id="<%= @task_list.id %>" data-task_id="<%=task.id%>" method: :patch class="status update-status-<%=task.id%>"><%= task_action(task) %></a>
+          </td>
+          <td>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
   <br>
   <br>
   <%= link_to "Logout", logout_path, method: :delete %>

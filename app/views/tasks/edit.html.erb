@@ -1,0 +1,14 @@
+<h1>Edit Task</h1>
+
+  <%= form_for([@task_list, @task]) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :notes %>
+  <%= f.text_area :notes %>
+  <%= f.label :start %>
+  <%= f.date_field :start %>
+  <%= f.label :due %>
+  <%= f.date_field :due %>
+  <%= f.submit "Update Task" %>
+<% end %>
+

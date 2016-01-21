@@ -15,11 +15,35 @@ class TasksController < ApplicationController
 
     if @task.save
       flash[:success] = "Task successfully created!"
-      redirect_to task_list_tasks_path(@task_list)
+      redirect_to task_list_path(@task_list)
     else
       flash[:failure] = "There was a problem creating your Task!"
       render :new
     end
+  end
+
+  def edit
+    @task_list = current_user.task_lists.find(params[:task_list_id])
+    @task = @task_list.tasks.find(params[:id])
+  end
+
+  def update
+    @task_list = current_user.task_lists.find(params[:task_list_id])
+    @task = @task_list.tasks.find(params[:id])
+
+    if @task.update(task_params)
+      flash[:success] = "Task successfully updated!"
+      redirect_to task_list_path(@task_list)
+    else
+      flash[:failure] = "Task update unsuccessful!"
+      render :new
+    end
+  end
+
+  def destroy
+    current_user.task_lists.find(params[:task_list_id]).tasks.find(params[:id]).destroy
+    flash[:success] = "Task deleted!"
+    redirect_to task_list_path(params[:task_list_id])
   end
 
   private
