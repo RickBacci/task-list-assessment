@@ -4,7 +4,8 @@ RSpec.feature "User tasks", type: :feature do
   include DatabaseCleaner
 
   it 'can be created' do
-    sign_in
+    sign_up
+    login
     create_tasklist
 
 

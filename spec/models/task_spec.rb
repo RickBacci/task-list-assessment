@@ -39,20 +39,24 @@ RSpec.describe Task, type: :model do
   end
 
   it 'has a start date in the present' do
-    start_date = Date.yesterday
-    due_date   = Date.tomorrow
+    start_date = Date.today + 1
+    due_date   = Date.today + 2
 
-    task       = Task.new(title: 'hello',
+    task       = Task.new(title: 'test',
                           notes: 'none',
                           start: start_date,
                           due: due_date)
+
+    expect(task.save!).to eq(true)
+
+    task.start = Date.today - 2
 
     expect(task.save).to eq(false)
   end
 
   it 'has a due date' do
-    start_date = Date.new
-    due_date   = Date.tomorrow
+    start_date = Date.today
+    due_date   = Date.today + 2
 
     task       = Task.new(title: 'hello',
                           notes: 'none',
@@ -65,20 +69,20 @@ RSpec.describe Task, type: :model do
 
   it 'has a due date after the start date' do
     start_date = Date.today
-    due_date   = Date.yesterday
+    due_date   = Date.tomorrow
 
     task       = Task.new(title: 'hello',
                           notes: 'none',
                           start: start_date,
                           due: due_date)
 
-    expect(task.save).to eq(false)
+    expect(task.save!).to eq(true)
   end
 
   it 'status is complete or incomplete' do
     start_date = Date.today
-    due_date   = Date.yesterday
-    task       = Task.create!(title: 'hello', notes: 'none', start: Date.today, due: Date.tomorrow)
+    due_date   = Date.today + 2
+    task       = Task.create(title: 'hello', notes: 'none', start: start_date, due: due_date)
 
     expect(task.status).to eq('incomplete')
 

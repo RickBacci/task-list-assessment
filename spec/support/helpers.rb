@@ -1,5 +1,5 @@
 
-def sign_in
+def sign_up
   visit tasks_path
 
   click_link "Sign Up"
@@ -9,6 +9,14 @@ def sign_in
   click_link_or_button "Create Account"
 end
 
+def login
+  visit tasks_path
+
+  click_link "Login"
+  fill_in "Email", with: 'user@email.com'
+  fill_in 'Password', with: 'password'
+  click_link_or_button "Login"
+end
 def create_tasklist
   click_link 'New TaskList'
 
