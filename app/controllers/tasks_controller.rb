@@ -14,10 +14,10 @@ class TasksController < ApplicationController
     @task = @task_list.tasks.create(task_params)
 
     if @task.save
-      flash[:success] = "Task successfully created"
+      flash[:success] = "Task successfully created!"
       redirect_to task_list_tasks_path(@task_list)
     else
-      flash[:failure] = "There was a problem creating your Task"
+      flash[:failure] = "There was a problem creating your Task!"
       render :new
     end
   end
