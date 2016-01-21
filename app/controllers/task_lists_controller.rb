@@ -5,7 +5,7 @@ class TaskListsController < ApplicationController
   end
 
   def show
-    @task_list = current_user.task_lists.find(params[:task_list_id])
+    @task_list = current_user.task_lists.find(params[:id])
   end
 
   def new
