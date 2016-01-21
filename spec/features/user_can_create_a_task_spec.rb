@@ -5,6 +5,22 @@ RSpec.feature "User tasks", type: :feature do
 
   it 'can be created' do
     sign_in
+    create_tasklist
+
+
+
+    click_link 'title'
+
+    click_link 'Create Task'
+
+    fill_in "Title", with: 'my task'
+    fill_in 'Notes', with: 'task notes'
+    fill_in 'start', with: Date.new
+    fill_in 'due'  , with: Date.tomorrow
+
+    click_link "Create Task"
+
+
 
   end
 end
